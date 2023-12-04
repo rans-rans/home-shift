@@ -32,6 +32,10 @@ class MainActivity : FlutterActivity() {
 
         methodChannel.setMethodCallHandler { call, _ ->
             when (call.method) {
+                "initialize_permissions" -> {
+                    PermissionHandler(this).requestPermissions()
+                }
+
                 "show_notification" -> {
                     val arguments = call.arguments as Map<*, *>
                     val imageUrl = arguments["imageUrl"] as String

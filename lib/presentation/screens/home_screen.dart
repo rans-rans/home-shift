@@ -8,7 +8,6 @@ import "package:home_shift/presentation/widgets/home_screen_widgets/control_pane
 import "package:home_shift/presentation/widgets/home_screen_widgets/expandable_card.dart";
 import "package:home_shift/presentation/widgets/home_screen_widgets/loading_shimmer.dart";
 
-import "package:permission_handler/permission_handler.dart";
 import "package:provider/provider.dart";
 
 class HomeScreen extends StatefulWidget {
@@ -53,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     settingsProvider = Provider.of<SettingsProvider>(context, listen: false);
     settingsProvider.loadSettings();
     loadImage();
-    Permission.notification.request();
+    methodChanel.invokeMethod("initialize_permissions");
   }
 
   @override
