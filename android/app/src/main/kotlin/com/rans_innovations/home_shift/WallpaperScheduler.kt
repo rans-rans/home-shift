@@ -28,7 +28,7 @@ object WallpaperScheduler {
 
         workManager.enqueueUniquePeriodicWork(
             "wallpaper_change",
-            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE , // or REPLACE
+            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE, // or REPLACE
             workRequest
         )
 
@@ -44,7 +44,7 @@ object WallpaperScheduler {
 
         var initialDelay = desiredTime.timeInMillis - currentTime.timeInMillis
         if (initialDelay <= 0) {
-            initialDelay += TimeUnit.DAYS.toMillis(1)
+            initialDelay += TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)
         }
 
         return initialDelay
